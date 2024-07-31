@@ -1,0 +1,144 @@
+/* Enhance navbar-brand font and spacing */
+.navbar-brand {
+font-weight: bold;
+font-size: 1.5rem;
+color: #223c51;
+}
+
+/* Ensure the navbar-toggler aligns correctly */
+.navbar-toggler {
+border: none;
+}
+
+/* Adjust the background color and size of the navbar-toggler-icon */
+.navbar-toggler-icon {
+background-color: #333;
+width: 30px;
+height: 3px;
+position: relative;
+display: inline-block;
+transition: all 0.3s;
+background-image: none;
+}
+
+.navbar-toggler-icon::before,
+.navbar-toggler-icon::after {
+content: '';
+position: absolute;
+left: 0;
+width: 30px;
+height: 3px;
+background-color: #333;
+transition: all 0.3s;
+}
+
+.navbar-toggler-icon::before {
+top: -8px;
+}
+
+.navbar-toggler-icon::after {
+top: 8px;
+}
+
+/* Transition for the toggler */
+.navbar-toggler.collapsed .navbar-toggler-icon {
+transform: rotate(90deg);
+}
+
+/* Add padding to the navbar links */
+.nav-link {
+padding-left: 1rem !important;
+padding-right: 1rem !important;
+}
+
+/* Center the toggle and logout buttons */
+.navbar .btn {
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.fa-moon, .fa-sun {
+vertical-align: middle;
+display: inline-block;
+font-size: 1.5rem; /* Adjust the size as needed */
+padding: 0.25rem;
+color: #ccc;
+}
+
+.dark-mode-btn {
+    background-color: #666;
+    border: 2px solid #666;
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Custom styles for the mat-slide-toggle */
+.custom-toggle .mat-slide-toggle-thumb {
+    display: none; /* Hide the default thumb */
+  }
+  
+  .custom-toggle .mat-slide-toggle-bar {
+    background-color: white !important; /* Set the background color to white */
+    border-radius: 15px; /* Make sure the bar is rounded */
+    width: 50px; /* Adjust the width of the slider bar */
+    height: 24px; /* Adjust the height of the slider bar */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .custom-toggle .mat-slide-toggle-thumb-container {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: white; /* Ensure the thumb container is white */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add some shadow for better visibility */
+  }
+  
+  .custom-toggle .mat-slide-toggle-thumb i {
+    font-size: 18px;
+    color: #f39c12; /* Default color for the icon (moon) */
+  }
+  
+  .custom-toggle.mat-checked .mat-slide-toggle-thumb i {
+    color: #f1c40f; /* Color for the icon when checked (sun) */
+  }
+  
+  .custom-toggle.mat-checked .mat-slide-toggle-bar, .mdc-switch__track::after {
+    background-color: white !important; /* Ensure the background color remains white when checked */
+  }
+
+  :root {
+    --mdc-switch-selected-track-color: white !important;
+  }
+
+  .menu-border {
+    border-bottom: 1px solid #000;
+  }
+
+  .navbar-brand {
+    margin-left: 15px;
+  }
+
+  .nav-link {
+    font-family: "Montserrat";
+    font-weight: 600;
+    color: #000;
+  }
+  .nav-link:hover {
+    font-family: "Montserrat";
+    font-weight: 600;
+    color: #777;
+  }
+
+  @media (min-width: 992px) {
+    .menu-border {
+      border: none;
+    }
+  }

@@ -1,0 +1,19 @@
+.h1-block {
+    font-family: "Montserrat";
+    font-weight: 600;
+    padding: 3rem 2rem;
+    background-color: var(--blueBackground);
+    color: #223c51;
+}
+
+.card-title, .card-subtitle, .card-text {
+    font-family: "Montserrat" !important;
+}
+
+
+.card {
+    background-color: #f3f3f3;
+}
+body.dark-mode .card {
+    background-color: #333 !important;
+}

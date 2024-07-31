@@ -1,27 +1,35 @@
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeModule } from './home/home.module';
-import { AboutModule } from './about/about.module';
-import { ContactModule } from './contact/contact.module';
-import { RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
+import { HomeComponent } from './components/home/home.component';
+import { AddEditBookComponent } from './components/add-edit-book/add-edit-book.component';
+import { QuoteComponent } from './components/quote/quote.component';
+import { LoginComponent } from './components/login/login.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthService } from './services/auth.service';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
+    HomeComponent,
+    AddEditBookComponent,
+    QuoteComponent,
+    LoginComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,  // Import AppRoutingModule here
-    HomeModule,
-    AboutModule,
-    ContactModule,
-    RouterModule,
-    CommonModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule,
+    MatSlideToggleModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

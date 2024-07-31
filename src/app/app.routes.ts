@@ -1,11 +1,14 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { AboutComponent } from './about/about.component';
-import { ContactComponent } from './contact/contact.component';
+import { HomeComponent } from './components/home/home.component';
+import { AddEditBookComponent } from './components/add-edit-book/add-edit-book.component';
+import { QuoteComponent } from './components/quote/quote.component';
+import { LoginComponent } from './components/login/login.component';
+import { AuthGuard } from './guards/auth.guard';
 
-export const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent },
-  { path: 'about', component: AboutComponent },
-  { path: 'contact', component: ContactComponent },
+export const appRoutes: Routes = [
+  { path: '', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: 'add-book', component: AddEditBookComponent, canActivate: [AuthGuard] },
+  { path: 'edit-book/:id', component: AddEditBookComponent, canActivate: [AuthGuard] },
+  { path: 'quotes', component: QuoteComponent, canActivate: [AuthGuard] },
+  { path: 'login', component: LoginComponent }
 ];
