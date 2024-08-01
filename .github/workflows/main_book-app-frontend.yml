@@ -56,6 +56,6 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'Book-app'
+          app-name: 'Book-app-frontend'
           slot-name: 'Production'
           package: ${{github.workspace}}
