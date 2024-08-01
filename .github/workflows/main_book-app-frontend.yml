@@ -22,7 +22,7 @@ jobs:
         run: npm install
 
       - name: Build project
-        run: npm run build -- --prod
+        run: npm run build -- --production
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
