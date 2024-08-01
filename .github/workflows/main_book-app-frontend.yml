@@ -7,12 +7,11 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
+  build:
+    runs-on: windows-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Set up Node.js version
         uses: actions/setup-node@v3
@@ -23,37 +22,28 @@ jobs:
         run: npm install
 
       - name: Build project
-        run: |
-          npm run build -- --prod
-        env:
-          CI: true  # Ensure non-interactive mode to prevent potential prompts
-
-      - name: Zip artifact for deployment
-        run: zip -r release.zip ./dist/*
+        run: npm run build -- --prod
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: angular-app
-          path: release.zip
+          path: ./dist
 
   deploy:
-    runs-on: ubuntu-latest
-    needs: build-and-deploy
+    runs-on: windows-latest
+    needs: build
     environment:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
     permissions:
-      id-token: write  # This is required for requesting the JWT
+      id-token: write # This is required for requesting the JWT
 
     steps:
       - name: Download artifact from build job
         uses: actions/download-artifact@v4
         with:
           name: angular-app
-
-      - name: Unzip artifact for deployment
-        run: unzip release.zip -d dist/
 
       - name: Login to Azure
         uses: azure/login@v2
@@ -68,4 +58,4 @@ jobs:
         with:
           app-name: 'Book-app-frontend'
           slot-name: 'Production'
-          package: ${{github.workspace}}
+          package: ./dist
