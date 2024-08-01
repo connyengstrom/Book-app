@@ -56,6 +56,6 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'Book-app-frontend'  # Ensure this matches your Azure Web App name
+          app-name: 'Book-app-frontend3'  # Ensure this matches your Azure Web App name
           slot-name: 'Production'
           package: ./dist
