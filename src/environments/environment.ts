@@ -1,4 +1,4 @@
 export const environment = {
     production: false,
-    apiUrl: 'http://localhost:5000/api' // Update to your actual API URL
+    apiUrl: 'https://book-app-hhdydmc2ehazgrht.eastus-01.azurewebsites.net/api'
   };

@@ -1,5 +1,5 @@
 export const environment = {
     production: true,
-    apiUrl: 'https://yourproductionapiurl.com/api' // Update to your actual API URL
+    apiUrl: 'https://book-app-hhdydmc2ehazgrht.eastus-01.azurewebsites.net/api'
   };
   
