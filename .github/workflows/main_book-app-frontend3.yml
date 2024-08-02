@@ -32,7 +32,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: angular-app
-          path: ${{github.workspace}}/myapp
+          path: dist
 
   deploy:
     runs-on: ubuntu-latest
@@ -62,4 +62,4 @@ jobs:
         with:
           app-name: 'Book-app-frontend3'
           slot-name: 'Production'
-          package: ${{github.workspace}}
+          package: dist
