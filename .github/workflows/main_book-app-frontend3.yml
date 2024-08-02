@@ -50,6 +50,9 @@ jobs:
           name: angular-app
           path: .
 
+      - name: Unzip artifact
+        run: unzip angular-app.zip -d dist
+
       - name: Login to Azure
         uses: azure/login@v2
         with:
@@ -58,9 +61,5 @@ jobs:
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
       - name: Deploy to Azure Web App
-        id: deploy-to-webapp
-        uses: azure/webapps-deploy@v3
-        with:
-          app-name: 'Book-app-frontend3'
-          slot-name: 'Production'
-          package: .
+        run: |
+          az webapp deploy --resource-group Book-app_group --name Book-app-frontend3 --src-path dist
