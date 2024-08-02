@@ -20,7 +20,7 @@ jobs:
       - name: Set up Node.js version
         uses: actions/setup-node@v3
         with:
-          node-version: '18.x'
+          node-version: '20.x'
 
       - name: Install dependencies
         run: npm install
@@ -48,6 +48,9 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: angular-app
+
+      - name: Unzip artifact
+        run: unzip angular-app.zip -d dist
 
       - name: Login to Azure
         uses: azure/login@v2
