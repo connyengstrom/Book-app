@@ -6,10 +6,25 @@
     color: #223c51;
 }
 
+.card {
+    padding: 1rem;
+}
 .card-title, .card-subtitle, .card-text {
     font-family: "Montserrat" !important;
 }
 
+.card-title {
+    font-size: 2rem;
+    line-height: 2rem;
+}
+.card-subtitle {
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+}
+.card-text {
+    font-size: 1rem;
+    line-height: 1.5rem;
+}
 
 .card {
     background-color: #f3f3f3;
@@ -17,3 +32,4 @@
 body.dark-mode .card {
     background-color: #333 !important;
 }
+

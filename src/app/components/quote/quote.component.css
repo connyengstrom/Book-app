@@ -13,3 +13,7 @@
 .author, .quote-text {
     font-family: "Montserrat" !important;
 }
+
+.list-group {
+    font-size: 1rem;
+}
