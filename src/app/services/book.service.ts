@@ -1,34 +1,33 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { environment } from '../../environments/environment';
 import { Book } from '../models/book.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BookService {
-  private apiUrl = environment.apiUrl;
+  private apiUrl = 'http://localhost:5000/api/books'; // Adjust the URL as necessary
 
   constructor(private http: HttpClient) {}
 
   getBooks(): Observable<Book[]> {
-    return this.http.get<Book[]>(`${this.apiUrl}/books`);
+    return this.http.get<Book[]>(this.apiUrl);
   }
 
   getBook(id: number): Observable<Book> {
-    return this.http.get<Book>(`${this.apiUrl}/books/${id}`);
+    return this.http.get<Book>(`${this.apiUrl}/${id}`);
   }
 
-  addBook(book: Book): Observable<Book> {
-    return this.http.post<Book>(`${this.apiUrl}/books`, book);
+  createBook(book: Book): Observable<Book> {
+    return this.http.post<Book>(this.apiUrl, book);
   }
 
   updateBook(id: number, book: Book): Observable<void> {
-    return this.http.put<void>(`${this.apiUrl}/books/${id}`, book);
+    return this.http.put<void>(`${this.apiUrl}/${id}`, book);
   }
 
   deleteBook(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/books/${id}`);
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 }

@@ -76,48 +76,7 @@ color: #ccc;
     justify-content: center;
 }
 
-/* Custom styles for the mat-slide-toggle */
-.custom-toggle .mat-slide-toggle-thumb {
-    display: none; /* Hide the default thumb */
-  }
-  
-  .custom-toggle .mat-slide-toggle-bar {
-    background-color: white !important; /* Set the background color to white */
-    border-radius: 15px; /* Make sure the bar is rounded */
-    width: 50px; /* Adjust the width of the slider bar */
-    height: 24px; /* Adjust the height of the slider bar */
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  
-  .custom-toggle .mat-slide-toggle-thumb-container {
-    width: 24px;
-    height: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    background-color: white; /* Ensure the thumb container is white */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add some shadow for better visibility */
-  }
-  
-  .custom-toggle .mat-slide-toggle-thumb i {
-    font-size: 18px;
-    color: #f39c12; /* Default color for the icon (moon) */
-  }
-  
-  .custom-toggle.mat-checked .mat-slide-toggle-thumb i {
-    color: #f1c40f; /* Color for the icon when checked (sun) */
-  }
-  
-  .custom-toggle.mat-checked .mat-slide-toggle-bar, .mdc-switch__track::after {
-    background-color: white !important; /* Ensure the background color remains white when checked */
-  }
 
-  :root {
-    --mdc-switch-selected-track-color: white !important;
-  }
 
   .menu-border {
     border-bottom: 1px solid #000;
@@ -143,3 +102,17 @@ color: #ccc;
       border: none;
     }
   }
+
+  .mat-mdc-slide-toggle {
+    --mdc-switch-selected-handle-color: #ffbb1c !important;
+    --mdc-switch-selected-pressed-handle-color: #ffbb1c !important;
+    --mdc-switch-selected-pressed-state-layer-color: #ffbb1c !important;
+    --mdc-switch-selected-hover-state-layer-color: #ffbb1c !important;
+    --mdc-switch-selected-hover-handle-color: #ffbb1c !important;
+    --mdc-switch-selected-focus-state-layer-color: #ffbb1c !important;
+    --mdc-switch-selected-focus-handle-color: #ffbb1c !important;
+    --mdc-switch-selected-track-color: #e0e0e0 !important;
+    --mdc-switch-selected-pressed-track-color: #e0e0e0 !important;
+    --mdc-switch-selected-hover-track-color: #e0e0e0 !important;
+    --mdc-switch-selected-focus-track-color: #e0e0e0 !important;
+}

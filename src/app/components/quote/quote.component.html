@@ -1,6 +1,8 @@
-<h1 class="h1-block mb-3">Quotes</h1>
+<div class="h1-block d-flex justify-content-center mb-4">
+  <h1 class="container">Quotes</h1>
+  </div>
+
 <div class="container">
-    
     <ul class="list-group">
       <li class="list-group-item p-3" *ngFor="let quote of quotes">
         <p class="quote-text">{{ quote.text }}</p><span class="author">- {{ quote.author }}</span>

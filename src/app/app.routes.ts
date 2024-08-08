@@ -3,6 +3,7 @@ import { HomeComponent } from './components/home/home.component';
 import { AddEditBookComponent } from './components/add-edit-book/add-edit-book.component';
 import { QuoteComponent } from './components/quote/quote.component';
 import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 import { AuthGuard } from './guards/auth.guard';
 
 export const appRoutes: Routes = [
@@ -10,5 +11,6 @@ export const appRoutes: Routes = [
   { path: 'add-book', component: AddEditBookComponent, canActivate: [AuthGuard] },
   { path: 'edit-book/:id', component: AddEditBookComponent, canActivate: [AuthGuard] },
   { path: 'quotes', component: QuoteComponent, canActivate: [AuthGuard] },
-  { path: 'login', component: LoginComponent }
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent }
 ];

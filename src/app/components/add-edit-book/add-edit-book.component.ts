@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BookService } from '../../services/book.service';
-import { Book } from '../../models/book.model';
 
 @Component({
   selector: 'app-add-edit-book',
@@ -11,46 +10,75 @@ import { Book } from '../../models/book.model';
 })
 export class AddEditBookComponent implements OnInit {
   bookForm: FormGroup;
-  isEditMode = false;
+  isEditMode: boolean = false;
+  bookId: number | null = null;
 
   constructor(
+    private fb: FormBuilder,
     private bookService: BookService,
     private route: ActivatedRoute,
-    private router: Router,
-    private formBuilder: FormBuilder
+    private router: Router
   ) {
-    this.bookForm = this.formBuilder.group({
+    this.bookForm = this.fb.group({
       id: [0],
       title: ['', Validators.required],
       author: ['', Validators.required],
-      publishedDate: ['', Validators.required]
+      genre: ['', Validators.required],
+      publishedDate: ['', Validators.required] // Ensure this expects a string
     });
   }
 
   ngOnInit(): void {
-    const id = this.route.snapshot.params['id'];
-    if (id) {
-      this.isEditMode = true;
-      this.bookService.getBook(id).subscribe(data => {
-        // Convert the date to YYYY-MM-DD format
-        const formattedDate = new Date(data.publishedDate).toISOString().substring(0, 10);
-        this.bookForm.patchValue({ ...data, publishedDate: formattedDate });
+    this.bookId = this.route.snapshot.params['id'];
+    this.isEditMode = !!this.bookId;
+
+    if (this.isEditMode && this.bookId) {
+      this.bookService.getBook(this.bookId).subscribe((book) => {
+        // Ensure the date is in the correct format
+        if (book.publishedDate) {
+          const formattedDate = this.formatDate(book.publishedDate);
+          this.bookForm.patchValue({
+            ...book,
+            publishedDate: formattedDate // Patch as a string
+          });
+        } else {
+          this.bookForm.patchValue(book);
+        }
       });
     }
   }
 
+  private formatDate(date: Date): string {
+    const parsedDate = new Date(date);
+    return parsedDate.toISOString().substring(0, 10); // Format to 'YYYY-MM-DD'
+  }
+
   onSubmit(): void {
-    if (this.bookForm.valid) {
-      const book: Book = this.bookForm.value;
-      if (this.isEditMode) {
-        this.bookService.updateBook(book.id, book).subscribe(() => {
+    if (this.bookForm.invalid) {
+      return;
+    }
+
+    const bookData = this.bookForm.value;
+
+    if (this.isEditMode && this.bookId) {
+      bookData.id = this.bookId;
+      this.bookService.updateBook(this.bookId, bookData).subscribe(
+        () => {
           this.router.navigate(['/']);
-        });
-      } else {
-        this.bookService.addBook(book).subscribe(() => {
+        },
+        (error) => {
+          console.error('Error updating book:', error);
+        }
+      );
+    } else {
+      this.bookService.createBook(bookData).subscribe(
+        () => {
           this.router.navigate(['/']);
-        });
-      }
+        },
+        (error) => {
+          console.error('Error creating book:', error);
+        }
+      );
     }
   }
 }

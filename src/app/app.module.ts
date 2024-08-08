@@ -6,11 +6,13 @@ import { HomeComponent } from './components/home/home.component';
 import { AddEditBookComponent } from './components/add-edit-book/add-edit-book.component';
 import { QuoteComponent } from './components/quote/quote.component';
 import { LoginComponent } from './components/login/login.component';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { AuthService } from './services/auth.service';
+import { RegisterComponent } from './components/register/register.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AuthService } from './services/auth.service';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AddEditBookComponent,
     QuoteComponent,
     LoginComponent,
+    RegisterComponent,
     NavbarComponent
   ],
   imports: [
@@ -29,7 +32,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HttpClientModule,
     MatSlideToggleModule
   ],
-  providers: [AuthService],
+  providers: [
+    AuthService,
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
