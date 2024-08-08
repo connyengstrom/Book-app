@@ -40,8 +40,12 @@ body.dark-mode .card {
   color: #fff;
 }
 
+body.dark-mode .card-genre {
+  color: #ddd !important;
+}
+
 body.dark-mode .card-subtitle {
-  color: #ccc !important;
+  color: #ddd !important;
 }
 
 body.dark-mode .btn {

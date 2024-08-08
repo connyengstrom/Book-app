@@ -37,7 +37,3 @@
 .card {
     background-color: #f3f3f3;
 }
-body.dark-mode .card {
-    background-color: #333 !important;
-}
-
