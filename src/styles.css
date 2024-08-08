@@ -39,6 +39,9 @@ body.dark-mode .card {
   background-color: #666;
   color: #fff;
 }
+body.dark-mode .h1-block h1 {
+  color: #ddd !important;
+}
 
 body.dark-mode .card-genre {
   color: #ddd !important;
@@ -46,6 +49,9 @@ body.dark-mode .card-genre {
 
 body.dark-mode .card-subtitle {
   color: #ddd !important;
+}
+body.dark-mode .card-title {
+  color: #eee !important;
 }
 
 body.dark-mode .btn {
@@ -72,6 +78,9 @@ ol, ul {
   padding: 0;
 }
 
+.form-control {
+  border: thin solid #555 !important;
+}
 
 
 @media (max-width: 991px) {
