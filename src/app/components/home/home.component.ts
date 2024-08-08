@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
   loadBooks(): void {
     this.bookService.getBooks().subscribe(books => {
       this.books = books;
-      this.cdr.markForCheck(); // Ensure change detection
+      this.cdr.markForCheck();
     });
   }
 
@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
         console.log(`Before deletion: ${this.books.length} books`);
         this.books = this.books.filter(book => book.id !== id);
         console.log(`After deletion: ${this.books.length} books`);
-        this.cdr.markForCheck(); // Ensure change detection
+        this.cdr.markForCheck();
       },
       (error) => {
         console.error('Error deleting book:', error);

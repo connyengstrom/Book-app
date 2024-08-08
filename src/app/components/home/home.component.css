@@ -1,8 +1,6 @@
 .h1-block {
-
     padding: 4rem 0rem;
     background-color: var(--blueBackground);
-
 }
 .h1-block h1 {
     font-family: "Montserrat";
@@ -24,12 +22,16 @@
     line-height: 2rem;
 }
 .card-subtitle {
-    font-size: 1.5rem;
-    line-height: 1.5rem;
+    font-size: 1.2rem;
+    line-height: 1.2rem;
 }
 .card-text {
     font-size: 1rem;
     line-height: 1.5rem;
+}
+.card-genre {
+    font-size: 1.2rem;
+    line-height: 1.2rem;
 }
 
 .card {
