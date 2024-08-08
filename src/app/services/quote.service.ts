@@ -13,7 +13,7 @@ export interface Quote {
   providedIn: 'root'
 })
 export class QuoteService {
-  private apiUrl = `${environment.apiUrl}/quotes`;
+  private apiUrl = `${environment.apiUrl}/api/quotes`;
 
   constructor(private http: HttpClient) {}
 
